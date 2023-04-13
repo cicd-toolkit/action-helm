@@ -29,7 +29,7 @@ RUN cd /tmp \
 RUN cd /tmp \
     && wget -q https://github.com/helm/chart-testing/releases/download/v3.8.0/chart-testing_3.8.0_linux_amd64.tar.gz \
     && tar xzfv chart-testing*.tar.gz --directory /usr/local/bin/ ct \
-    && rm chart-testing-*.tar.gz      
+    && rm chart-testing*.tar.gz      
 
 
 
