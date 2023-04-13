@@ -15,7 +15,7 @@ jobs:
         run: helm version
       - name: Check ct version
         run: |
-          ls -la /usr/local/bin/ct
+          ls -la /usr/local/bin/
           ct version
       - name: Check helm-docs version
         run: helm-docs --version
