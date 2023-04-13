@@ -3,12 +3,12 @@ description: 'configures a kubernetes toolkit for your actions => Includes: kube
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.kubectl_version }}
-    - ${{ inputs.helm_version }}
-    - ${{ inputs.helm_docs_version }}
-    - ${{ inputs.yq_version }}
-    - ${{ inputs.ct_version }}
+  env:
+    KUBECTL_VERSION: ${{ inputs.kubectl_version }}
+    HELM_VERSION: ${{ inputs.helm_version }}
+    HELM_DOCS_VERSION: ${{ inputs.helm_docs_version }}
+    YQ_VERSION: ${{ inputs.yq_version }}
+    CR_VERSION: ${{ inputs.ct_version }}
 branding:
   icon: 'terminal'
   color: 'blue'
