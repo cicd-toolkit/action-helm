@@ -4,7 +4,7 @@ on: [push]
 jobs:
   custom_test:
     runs-on: ubuntu-latest
-    name: We test it locally with act
+    name: We test it locally
     steps:
       - name: Run CMD
         uses: cicd-toolkit/action-helm@master
@@ -14,9 +14,7 @@ jobs:
       - name: Check helm version
         run: helm version
       - name: Check ct version
-        run: |
-          ls -la /usr/local/bin/
-          ct version
+        run: ct version
       - name: Check helm-docs version
         run: helm-docs --version
       - name: Check yq version
