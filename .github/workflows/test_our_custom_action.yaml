@@ -8,10 +8,8 @@ jobs:
     steps:
       - name: Run CMD
         uses: cicd-toolkit/action-helm@master
-        id: main
-        with:
-          cmd: | 
-            helm-docs --version 
-            
-      - name: print output
-        run: echo "${{ steps.main.outputs.output }}"            
+
+      - name: Check kubectl version
+        run: kubectl version
+      - name: Check helm version
+        run: helm version

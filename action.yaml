@@ -1,15 +1,35 @@
-# action.yaml
-name: "Blog Custom Github Action"
-description: "run"
-inputs:
-  cmd:
-    description: "command"
-    required: true
-outputs:
-  output:
-    description: "output"
+name: 'helm-cicd-toolkit'
+description: 'configures a kubernetes toolkit for your actions => Includes: kubectl, helm, helm-docs, ct, jq ,yq'
 runs:
-  using: "docker"
-  image: "Dockerfile"
+  using: 'docker'
+  image: 'Dockerfile'
   args:
-    - ${{ inputs.cmd }}
+    - ${{ inputs.kubectl_version }}
+    - ${{ inputs.helm_version }}
+    - ${{ inputs.helm_docs_version }}
+    - ${{ inputs.yq_version }}
+    - ${{ inputs.ct_version }}
+branding:
+  icon: 'terminal'
+  color: 'blue'
+inputs:
+  kubectl_version:
+    description: 'kubectl version, e.g. `v1.21.0`'
+    required: false
+    default: "1.27.0"
+  helm_version:
+    description: 'helm cli version, e.g. `v3.7.0`'
+    required: false
+    default: "3.11.3"
+  helm_docs_version:
+    description: 'helm-docs version'
+    required: false
+    default: '1.11.0'
+  yq_version:
+    description: 'yq version'
+    required: false
+    default: '4.33.3'
+  ct_version:
+    description: 'ct version'
+    required: false
+    default: '3.8.0'
