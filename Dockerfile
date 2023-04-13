@@ -19,28 +19,28 @@ RUN	apk add --no-cache \
   wget \
   jq
 
-ENV KUBECTL_VERSION
+ENV KUBECTL_VERSION "1.27.0"
 RUN wget -q https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl -O /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl
 
 
-ENV HELM_VERSION
+ENV HELM_VERSION "3.11.3"
 RUN cd /tmp \
     && wget -q https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
     && tar xzfv helm-v${HELM_VERSION}*.tar.gz --directory /usr/local/bin/ helm \
     && rm helm-v${HELM_VERSION}-*.tar.gz
 
-ENV HELM_DOCS_VERSION
+ENV HELM_DOCS_VERSION "1.11.0"
 RUN cd /tmp \
     && wget -q https://github.com/norwoodj/helm-docs/releases/download/v${HELM_DOCS_VERSION}/helm-docs_${HELM_DOCS_VERSION}_Linux_x86_64.tar.gz \
     && tar xzfv helm-docs_*.tar.gz --directory /usr/local/bin/ helm-docs  \
     && rm helm-docs_*.tar.gz
 
-ENV YQ_VERSION
+ENV YQ_VERSION "4.33.3"
 RUN wget https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_linux_amd64 -O /usr/bin/yq \
     && chmod +x /usr/bin/yq
 
-ENV CR_VERSION
+ENV CR_VERSION "3.8.0"
 RUN cd /tmp \
     && wget -q https://github.com/helm/chart-testing/releases/download/v${CR_VERSION}/chart-testing_${CR_VERSION}_linux_amd64.tar.gz \
     && tar xzfv chart-testing_${CR_VERSION}*.tar.gz --directory /usr/local/bin/ ct \
