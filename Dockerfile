@@ -27,8 +27,9 @@ RUN wget -q https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubect
 ENV HELM_VERSION "3.11.3"
 RUN cd /tmp \
     && wget -q https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
-    && tar xzfv helm-v${HELM_VERSION}*.tar.gz --directory /usr/local/bin/ helm \
+    && tar xzfv helm-v${HELM_VERSION}*.tar.gz --directory /usr/local/bin/ linux-amd64/helm \
     && rm helm-v${HELM_VERSION}-*.tar.gz
+
 
 ENV HELM_DOCS_VERSION "1.11.0"
 RUN cd /tmp \
@@ -36,15 +37,18 @@ RUN cd /tmp \
     && tar xzfv helm-docs_*.tar.gz --directory /usr/local/bin/ helm-docs  \
     && rm helm-docs_*.tar.gz
 
+
 ENV YQ_VERSION "4.33.3"
 RUN wget https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_linux_amd64 -O /usr/bin/yq \
     && chmod +x /usr/bin/yq
+
 
 ENV CR_VERSION "3.8.0"
 RUN cd /tmp \
     && wget -q https://github.com/helm/chart-testing/releases/download/v${CR_VERSION}/chart-testing_${CR_VERSION}_linux_amd64.tar.gz \
     && tar xzfv chart-testing_${CR_VERSION}*.tar.gz --directory /usr/local/bin/ ct \
     && rm chart-testing_${CR_VERSION}*.tar.gz
+
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
