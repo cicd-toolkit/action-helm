@@ -10,10 +10,10 @@ RUN	apk add --no-cache \
   jq 
   
   
-RUN wget https://github.com/mikefarah/yq/releases/download/v4.33.3/yq_linux_amd64 -O /usr/bin/yq \ 
+RUN wget -q https://github.com/mikefarah/yq/releases/download/v4.33.3/yq_linux_amd64 -O /usr/bin/yq \ 
     && chmod +x /usr/bin/yq  
     
-RUN wget -q https://storage.googleapis.com/kubernetes-release/release/1.27.0/bin/linux/amd64/kubectl -O /usr/local/bin/kubectl \
+RUN wget -q "https://dl.k8s.io/release/v1.27.0/bin/linux/amd64/kubectl" -O /usr/local/bin/kubectl \
     && chmod +x /usr/local/bin/kubectl  
     
 RUN cd /tmp \
