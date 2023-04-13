@@ -11,16 +11,18 @@ jobs:
 
       - name: Check kubectl version
         run: kubectl version --client=true
+
       - name: Check helm version
         run: helm version
+
       - name: Check ct version
-        uses: cicd-toolkit/action-helm@master
-        run: |
-          ls -la /usr/local/bin/
-          ct version
+        run: ct version
+
       - name: Check helm-docs version
         run: helm-docs --version
+
       - name: Check yq version
         run: yq --version
+
       - name: Check jq version
         run: jq --version
