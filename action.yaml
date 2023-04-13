@@ -1,5 +1,5 @@
 name: 'helm-cicd-toolkit'
-description: 'configures a kubernetes toolkit for your actions => Includes: kubectl, helm, helm-docs, ct, jq ,yq'
+description: 'configures a kubernetes toolkit for your actions => Includes: kubectl, helm, helm-docs, ct, jq, yq'
 runs:
   using: 'docker'
   image: 'Dockerfile'
