@@ -30,23 +30,23 @@ runs:
     - shell: bash
       run: |
         echo "using kubectl@${{ inputs.kubectl_version }}"
-        wget -q "https://dl.k8s.io/release/v${{ inputs.kubectl_version }}/bin/linux/amd64/kubectl" -O /usr/local/bin/kubectl \
-            && chmod +x /usr/local/bin/kubectl
+        sudo wget -q "https://dl.k8s.io/release/v${{ inputs.kubectl_version }}/bin/linux/amd64/kubectl" -O /usr/local/bin/kubectl \
+            && sudo chmod +x /usr/local/bin/kubectl
 
 
         echo "using helm@${{ inputs.helm_version }}"
-        wget -q https://get.helm.sh/helm-${{ inputs.helm_version }}-linux-amd64.tar.gz -O - | tar -xzO linux-amd64/helm > /usr/local/bin/helm
+        sudo wget -q https://get.helm.sh/helm-${{ inputs.helm_version }}-linux-amd64.tar.gz -O - | tar -xzO linux-amd64/helm > /usr/local/bin/helm
 
 
         echo "using helm-docs@${{ inputs.helm_docs_version }}"
-        wget -q https://github.com/norwoodj/helm-docs/releases/download/v{{ inputs.helm_docs_version }}/helm-docs_{{ inputs.helm_docs_version }}_Linux_x86_64.tar.gz -O - | tar -xzO helm-docs > /usr/local/bin/helm-docs
+        sudo wget -q https://github.com/norwoodj/helm-docs/releases/download/v{{ inputs.helm_docs_version }}/helm-docs_{{ inputs.helm_docs_version }}_Linux_x86_64.tar.gz -O - | tar -xzO helm-docs > /usr/local/bin/helm-docs
 
 
         echo "using yq@${{ inputs.yq_version }}"
-        wget -q https://github.com/mikefarah/yq/releases/download/v${{ inputs.yq_version }}/yq_linux_amd64 -O /usr/bin/yq \
-            && chmod +x /usr/bin/yq
+        sudo wget -q https://github.com/mikefarah/yq/releases/download/v${{ inputs.yq_version }}/yq_linux_amd64 -O /usr/bin/yq \
+            && sudo chmod +x /usr/bin/yq
 
         echo "using ct@$ct_version"
-        wget -q https://github.com/helm/chart-testing/releases/download/v${{ inputs.ct_version }}/chart-testing_${{ inputs.ct_version }}_linux_amd64.tar.gz -O - | tar -xzO ct > /usr/local/bin/ct
+        sudo wget -q https://github.com/helm/chart-testing/releases/download/v${{ inputs.ct_version }}/chart-testing_${{ inputs.ct_version }}_linux_amd64.tar.gz -O - | tar -xzO ct > /usr/local/bin/ct
 
 
