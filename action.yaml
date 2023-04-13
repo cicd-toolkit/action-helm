@@ -1,0 +1,15 @@
+# action.yaml
+name: "Blog Custom Github Action"
+description: "run"
+inputs:
+  cmd:
+    description: "command"
+    required: true
+outputs:
+  output:
+    description: "output"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.cmd }}
