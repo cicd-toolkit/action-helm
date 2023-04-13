@@ -1,3 +1,4 @@
+name: local testing
 on: [push]
 
 jobs:
@@ -5,8 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     name: We test it locally with act
     steps:
-      - name: Get Pokemon name
+      - name: Run CMD
         uses: cicd-toolkit/action-helm@master
+        id: main
         with:
           cmd: | 
             helm-docs --version 
+            
+      - name: print output
+        run: echo "${{ steps.main.outputs.output }}"            
