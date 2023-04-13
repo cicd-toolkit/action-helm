@@ -23,8 +23,8 @@ RUN cd /tmp \
     
 RUN cd /tmp \
     && wget -q https://get.helm.sh/helm-v3.11.3-linux-amd64.tar.gz \
-    && tar xzfv helm*.tar.gz --directory /usr/local/bin/ helm \
-    && rm helm-*.tar.gz  
+    && tar xzfv helm-v3*.tar.gz --directory /usr/local/bin/ linux-amd64/helm \
+    && rm helm-v3*.tar.gz  
     
 RUN cd /tmp \
     && wget -q https://github.com/helm/chart-testing/releases/download/v3.8.0/chart-testing_3.8.0_linux_amd64.tar.gz \
