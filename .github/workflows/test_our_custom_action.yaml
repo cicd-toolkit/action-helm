@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     name: We test it locally
     steps:
-      - name: Run CMD
+      - name: setup tools
         uses: cicd-toolkit/action-helm@master
 
       - name: Check kubectl version

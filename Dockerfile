@@ -39,15 +39,14 @@ RUN cd /tmp \
 
 
 ENV YQ_VERSION "4.33.3"
-RUN wget https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_linux_amd64 -O /usr/bin/yq \
+RUN wget -q https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_linux_amd64 -O /usr/bin/yq \
     && chmod +x /usr/bin/yq
 
 
 ENV CR_VERSION "3.8.0"
 RUN cd /tmp \
     && wget -q https://github.com/helm/chart-testing/releases/download/v${CR_VERSION}/chart-testing_${CR_VERSION}_linux_amd64.tar.gz \
-    && tar xzfv chart-testing_${CR_VERSION}*.tar.gz --directory /usr/local/bin/ ct \
-    && rm chart-testing_${CR_VERSION}*.tar.gz
+    && tar xzfv chart-testing_${CR_VERSION}*.tar.gz --directory /usr/local/bin/ ct
 
 
 COPY entrypoint.sh /entrypoint.sh
