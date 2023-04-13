@@ -29,7 +29,7 @@ RUN cd /tmp \
     && wget -q https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
     && tar xzfv helm-v${HELM_VERSION}*.tar.gz --no-same-owner --no-same-permissions linux-amd64/helm \
     && mv linux-amd64/helm /usr/local/bin/ \
-    && rm helm-v${HELM_VERSION}-*.tar.gz
+    && rm -rf linux-amd64
 
 
 ENV HELM_DOCS_VERSION "1.11.0"
@@ -47,7 +47,8 @@ RUN wget -q https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_
 ENV CR_VERSION "3.8.0"
 RUN cd /tmp \
     && wget -q https://github.com/helm/chart-testing/releases/download/v${CR_VERSION}/chart-testing_${CR_VERSION}_linux_amd64.tar.gz \
-    && tar xzfv chart-testing_${CR_VERSION}*.tar.gz --no-same-owner --no-same-permissions --directory /usr/local/bin/ ct
+    && tar xzfv chart-testing_${CR_VERSION}*.tar.gz --no-same-owner --no-same-permissions --directory /usr/local/bin/ ct \
+    && rm chart-testing_${CR_VERSION}*.tar.gz
 
 
 COPY entrypoint.sh /entrypoint.sh
