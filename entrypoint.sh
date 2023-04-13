@@ -28,5 +28,5 @@ wget -q https://github.com/mikefarah/yq/releases/download/v$yq_version/yq_linux_
 
 echo "using ct@$ct_version"
 wget -q https://github.com/helm/chart-testing/releases/download/v${ct_version}/chart-testing_${ct_version}_linux_amd64.tar.gz \
-    && tar xzf chart-testing*.tar.gz --directory /usr/local/bin/ ct \
-    && rm chart-testing*.tar.gz
+tar xzfv chart-testing*.tar.gz --directory /usr/local/bin/ ct \
+ls -la  /usr/local/bin/
