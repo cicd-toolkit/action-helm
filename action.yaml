@@ -39,7 +39,7 @@ runs:
 
 
         echo "using helm-docs@${{ inputs.helm_docs_version }}"
-        sudo wget -q https://github.com/norwoodj/helm-docs/releases/download/v{{ inputs.helm_docs_version }}/helm-docs_{{ inputs.helm_docs_version }}_Linux_x86_64.tar.gz -O - | tar -xzO helm-docs > /usr/local/bin/helm-docs
+        sudo wget -q https://github.com/norwoodj/helm-docs/releases/download/v${{ inputs.helm_docs_version }}/helm-docs_${{ inputs.helm_docs_version }}_Linux_x86_64.tar.gz -O - | tar -xzO helm-docs > /usr/local/bin/helm-docs
 
 
         echo "using yq@${{ inputs.yq_version }}"
