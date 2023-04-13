@@ -27,14 +27,15 @@ RUN wget -q https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubect
 ENV HELM_VERSION "3.11.3"
 RUN cd /tmp \
     && wget -q https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
-    && tar xzfv helm-v${HELM_VERSION}*.tar.gz --directory /usr/local/bin/ linux-amd64/helm \
+    && tar xzfv helm-v${HELM_VERSION}*.tar.gz --no-same-owner --no-same-permissions linux-amd64/helm \
+    && mv linux-amd64/helm /usr/local/bin/ \
     && rm helm-v${HELM_VERSION}-*.tar.gz
 
 
 ENV HELM_DOCS_VERSION "1.11.0"
 RUN cd /tmp \
     && wget -q https://github.com/norwoodj/helm-docs/releases/download/v${HELM_DOCS_VERSION}/helm-docs_${HELM_DOCS_VERSION}_Linux_x86_64.tar.gz \
-    && tar xzfv helm-docs_*.tar.gz --directory /usr/local/bin/ helm-docs  \
+    && tar xzfv helm-docs_*.tar.gz --no-same-owner --no-same-permissions --directory /usr/local/bin/ helm-docs  \
     && rm helm-docs_*.tar.gz
 
 
@@ -46,7 +47,7 @@ RUN wget -q https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_
 ENV CR_VERSION "3.8.0"
 RUN cd /tmp \
     && wget -q https://github.com/helm/chart-testing/releases/download/v${CR_VERSION}/chart-testing_${CR_VERSION}_linux_amd64.tar.gz \
-    && tar xzfv chart-testing_${CR_VERSION}*.tar.gz --directory /usr/local/bin/ ct
+    && tar xzfv chart-testing_${CR_VERSION}*.tar.gz --no-same-owner --no-same-permissions --directory /usr/local/bin/ ct
 
 
 COPY entrypoint.sh /entrypoint.sh
